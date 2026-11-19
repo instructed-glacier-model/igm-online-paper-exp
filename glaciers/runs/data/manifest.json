@@ -1,0 +1,67 @@
+{
+  "aletsch": {
+    "filename": "aletsch.nc",
+    "sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+    "provenance": "Aletsch model state at year 200, generated from the historical IGM Aletsch tutorial input.",
+    "upstream_repository": "https://github.com/instructed-glacier-model/igm-examples",
+    "upstream_commit": "43be36b2c687d27fe94a6eccb21a661c89cb9765",
+    "upstream_path": "aletsch-basic/data/input.nc",
+    "upstream_sha256": "b3634bf3bbbf1448455cd09edbe0a96ea7f0d1bb8bdfa8ce9c9f6c921fe32409",
+    "preparation": "Original DahuNet reference trajectory sampled at year 200 by tools/prepare_data.py, retaining the original ice mask.",
+    "original_experiment_file": "dahunet/runs/aletsch/data/input_t200.nc",
+    "role": "initial condition",
+    "initial_time_year": 200
+  },
+  "valais": {
+    "filename": "valais.nc",
+    "sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+    "provenance": "Valais model state at year 200. The pre-spin-up bed and coordinates match the recorded crop of the SRTM-based Alps bed in igm-core-paper-exp.",
+    "upstream_repository": "https://github.com/instructed-glacier-model/igm-core-paper-exp",
+    "upstream_commit": "0f0274acb922436a92be9cd51cb8d600a43e0ebc",
+    "upstream_path": "alps_scalability/runs/data/input_bench.nc",
+    "upstream_crop": {
+      "x_start": 2050,
+      "x_stop": 2850,
+      "y_start": 2510,
+      "y_stop": 3110,
+      "indexing": "zero-based, stop-exclusive"
+    },
+    "source_documentation": "alps_scalability/runs/README.md: SRTM topography with major lakes and present-day glaciers removed; Farinotti et al. (2019) thickness.",
+    "references": [
+      "https://doi.org/10.1029/2005RG000183",
+      "https://doi.org/10.3929/ethz-b-000315707",
+      "https://doi.org/10.1038/s41561-019-0300-3",
+      "https://doi.org/10.1017/jog.2023.74",
+      "https://doi.org/10.1038/s41467-025-56168-3"
+    ],
+    "upstream_terms": [
+      {
+        "component": "Farinotti et al. (2019) consensus thickness dataset",
+        "license": "CC-BY-NC-SA-4.0",
+        "license_source": "https://doi.org/10.3929/ethz-b-000315707"
+      }
+    ],
+    "preparation": "Original DahuNet reference trajectory sampled at year 200 by tools/prepare_data.py.",
+    "original_experiment_file": "dahunet/runs/valais/data/input_t200.nc",
+    "role": "initial condition",
+    "initial_time_year": 200
+  },
+  "jakobshavn": {
+    "filename": "jakobshavn.nc",
+    "sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+    "provenance": "Sermeq Kujalleq geometry from the original Jakobshavn experiment. BedMachine Greenland attribution is supported by native-grid alignment and a matching surface-elevation field; the exact upstream release is unspecified in the archived source.",
+    "upstream_repository": "https://github.com/jouvetg/jakobshavn",
+    "upstream_commit": "d1786fec3d140f4e42cdaa1961b04b6d3e3d5f8a",
+    "upstream_path": "data/input.nc",
+    "upstream_git_blob": "9f4983ce534ad185fa8078771da0b09ecce61176",
+    "source_product_family": "IceBridge BedMachine Greenland (IDBMG4)",
+    "source_product_release": "unspecified in the archived source",
+    "references": [
+      "https://nsidc.org/data/idbmg4",
+      "https://doi.org/10.1002/2017GL074954"
+    ],
+    "original_experiment_file": "jakobshavn/data/input.nc",
+    "role": "initial condition",
+    "initial_time_year": 0
+  }
+}

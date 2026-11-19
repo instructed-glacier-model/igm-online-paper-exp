@@ -1,0 +1,24 @@
+% Generated from data/table5_2_ablation.csv. Requires booktabs and amsmath.
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrrr@{}}
+\toprule
+Input & $\|\mathbf e^{h}\|$ & $\|\mathbf e^{t}\|/\|\mathbf e^{h}\|$ & $\gamma_{50}$ & $\|\mathbf e^{(50)}\|$ & Speed error (\%) & Reduction (\%)\\
+\midrule
+\multicolumn{7}{@{}l}{\emph{Aletsch, CNN backbone}}\\
+Raw state & 2.56 & 1.00 & 0.82 & 2.12 & 2.56 & --- \\
+Three features & 1.39 & 1.00 & 0.87 & 1.12 & 1.26 & 54 \\
+Five features & 1.23 & 1.00 & 0.87 & 0.93 & 1.11 & 55 \\
+Scrambled & 2.29 & 1.00 & 0.90 & 2.08 & 1.83 & 33 \\
+\midrule
+\multicolumn{7}{@{}l}{\emph{Valais, CNN backbone}}\\
+Raw state & 4.41 & 1.00 & 0.74 & 3.08 & 3.05 & --- \\
+Three features & 3.19 & 1.00 & 0.78 & 2.25 & 2.56 & 16 \\
+Five features & 3.02 & 1.00 & 0.75 & 2.12 & 2.50 & 18 \\
+Scrambled & 4.50 & 1.00 & 0.71 & 3.21 & 3.54 & -18 \\
+\midrule
+\multicolumn{7}{@{}l}{\emph{Sermeq Kujalleq, FNO backbone}}\\
+Raw state & 12.6 & 1.00 & 0.94 & 11.7 & 0.17 & --- \\
+Three features & 11.6 & 0.99 & 0.92 & 11.1 & 0.16 & 6 \\
+Five features & 12.1 & 1.01 & 0.92 & 11.4 & 0.21 & -18 \\
+Scrambled & 12.6 & 1.01 & 0.90 & 11.9 & 0.23 & -37 \\
+\bottomrule
+\end{tabular*}

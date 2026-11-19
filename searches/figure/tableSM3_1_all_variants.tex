@@ -1,0 +1,36 @@
+% Generated from data/tableSM3_1_all_variants.csv. Requires booktabs and amsmath.
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrrrr@{}}
+\toprule
+Backbone, inputs & error (\%) & RMSE & qual. & qual. & $T_{10}$ (s) & smallest & best RMSE\\
+\midrule
+\multicolumn{8}{@{}l}{\emph{Aletsch}}\\
+MLP, raw & 77 & 47.4 & 0 & 0 & --- & --- & 41.5 \\
+CNN, raw & 73 & 45.3 & 2 & 66 & 97 & 27\,388 & 0.47 \\
+CNN, three features & 51 & 15.6 & 6 & 231 & 65 & 21\,748 & 0.28 \\
+DahuNet-CNN & 44 & 9.9 & 9 & 244 & 66 & 4\,868 & 0.27 \\
+CNN, scrambled & 76 & 45.9 & 2 & 74 & 97 & 42\,628 & 0.25 \\
+FNO, raw & 48 & 20.2 & 5 & 140 & 83 & 266\,052 & 0.17 \\
+FNO, three features & 29 & 11.1 & 5 & 303 & 98 & 106\,356 & 0.10 \\
+DahuNet-FNO & 27 & 12.3 & 5 & 259 & 92 & 153\,884 & 0.10 \\
+\midrule
+\multicolumn{8}{@{}l}{\emph{Sermeq Kujalleq}}\\
+MLP, raw & 90 & 577 & 0 & 0 & --- & --- & 535.5 \\
+CNN, raw & 77 & 527 & 1 & 84 & 203 & 162\,556 & 21.0 \\
+CNN, three features & 44 & 340 & 1 & 73 & 236 & 130\,980 & 19.3 \\
+DahuNet-CNN & 52 & 372 & 1 & 86 & 184 & 63\,484 & 18.2 \\
+CNN, scrambled & 90 & 551 & 1 & 126 & 193 & 116\,380 & 18.0 \\
+FNO, raw & 52 & 381 & 5 & 219 & 142 & 153\,788 & 27.5 \\
+FNO, three features & 48 & 304 & 5 & 243 & 139 & 457\,988 & 20.4 \\
+DahuNet-FNO & 45 & 321 & 5 & 226 & 145 & 106\,404 & 24.5 \\
+\midrule
+\multicolumn{8}{@{}l}{\emph{Valais}}\\
+MLP, raw & 73 & 50.4 & 0 & 0 & --- & --- & 47.2 \\
+CNN, raw & 71 & 49.5 & 0 & 11 & 473 & 177\,524 & 2.47 \\
+CNN, three features & 32 & 11.6 & 4 & 106 & 253 & 56\,964 & 0.82 \\
+DahuNet-CNN & 32 & 20.4 & 5 & 170 & 227 & 32\,212 & 0.64 \\
+CNN, scrambled & 72 & 49.7 & 0 & 1 & --- & 466\,372 & 1.86 \\
+FNO, raw & 43 & 24.5 & 0 & 18 & 1157 & 8\,310\,980 & 1.85 \\
+FNO, three features & 30 & 15.4 & 0 & 33 & 536 & 4\,203\,620 & 1.59 \\
+DahuNet-FNO & 29 & 14.7 & 0 & 52 & 515 & 3\,703\,220 & 1.50 \\
+\bottomrule
+\end{tabular*}

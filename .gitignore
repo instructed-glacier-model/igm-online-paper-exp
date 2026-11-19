@@ -1,0 +1,13 @@
+# Fresh experiments
+results/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.log
+*.aux
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+.DS_Store

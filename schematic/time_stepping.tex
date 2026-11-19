@@ -1,0 +1,58 @@
+% Structure of the time-dependent problem (2.1) and of the online neural solve;
+% U_k is the field passed to Phi (the minimizer, or its network approximation online)
+% (section 2.2), adapted from the authors' schematic. Orange: state I (advanced by
+% the inexpensive component Phi); blue: minimizer U (expensive component);
+% mauve: network weights theta, carried forward between time steps.
+% blue_t is defined in the paper's shared preamble; the other colors are local to the figure.
+\definecolor{orange_t}{RGB}{211,84,0}
+\definecolor{mauve_t}{RGB}{142,68,173}
+\newcommand*{\tsI}[1]{{\color{orange_t}\mathbf I_{#1}}}
+\newcommand*{\tsU}[1]{{\color{blue_t}\mathbf U_{#1}}}
+\newcommand*{\tsT}[1]{{\color{mauve_t}\bm\theta_{#1}}}
+\begin{tikzpicture}[every node/.style={font=\footnotesize},
+    flow/.style={-{Stealth[length=1.6mm,width=1.4mm]}, semithick},
+    cheap/.style={draw=none, fill=orange_t!10, rounded corners, inner sep=3pt,
+                  minimum height=0.6cm},
+    costly/.style={draw=none, fill=blue_t!10, rounded corners, inner sep=4pt,
+                   minimum height=0.9cm}]
+
+  \def\dx{4.2}
+  % --- time axis -------------------------------------------------------------
+  \draw[->] (-0.6,0.95) -- (2*\dx+0.9,0.95) node[right] {$t$};
+  \foreach \i/\lab in {0/{k-1}, 1/k, 2/{k+1}}
+    {\draw (\i*\dx,0.85) -- (\i*\dx,1.05) node[above] {$t_{\lab}$};}
+
+  % --- state row: inexpensive component ---------------------------------------
+  \node at (0,-0.75) {$\tsI{k-1}$};
+  \node at (\dx,-0.75) {$\tsI{k}$};
+  \node at (2*\dx,-0.75) {$\tsI{k+1}$};
+  \draw[flow] (0.5,-0.7) to[out=22, in=158] (\dx-0.45,-0.7);
+  \draw[flow] (\dx+0.45,-0.7) to[out=22, in=158] (2*\dx-0.5,-0.7);
+  \node[cheap] at (0.5*\dx,0.12) {$\tsI{k}=\Phi(\tsI{k-1},\tsU{k-1})$};
+  \node[cheap] at (1.5*\dx,0.12) {$\tsI{k+1}=\Phi(\tsI{k},\tsU{k})$};
+
+  % --- minimizer row: expensive component -------------------------------------
+  \node[costly] (min) at (\dx,-2.35)
+    {$\tsU{k}\in\displaystyle\argmin_{{\color{blue_t}\mathbf U}\in X} J({\color{blue_t}\mathbf U};\tsI{k})$};
+  \node (left) at (0,-2.35) {$\cdots$};
+  \node (right) at (2*\dx,-2.35) {$\cdots$};
+  % the state enters the minimization ...
+  \foreach \i in {0,1,2} {\draw[flow] (\i*\dx,-1.02) -- (\i*\dx,-1.85);}
+  % ... and the minimizer enters the next state update
+  \draw[flow, blue_t] (min.east) to[out=0, in=-90] (1.5*\dx,-0.5);
+  \draw[flow, blue_t] (left.east) to[out=0, in=-90] (0.5*\dx,-0.5);
+
+  % --- weight row: online neural solve ----------------------------------------
+  \node (t0) at (0,-3.95) {$\tsT{k-1}$};
+  \node (t1) at (\dx,-3.95) {$\tsT{k}$};
+  \node (t2) at (2*\dx,-3.95) {$\tsT{k+1}$};
+  \draw[flow, mauve_t] (t0) -- node[above, inner sep=2pt] {warm start, $m_k$ updates} (t1);
+  \draw[flow, mauve_t] (t1) -- node[above, inner sep=2pt] {warm start, $m_{k+1}$ updates} (t2);
+  \draw[flow, mauve_t, densely dashed] (t1.north) -- (min.south)
+    node[pos=0.45, right, inner sep=3pt] {${\color{mauve_t}\mathcal M}(\tsT{k};\mathbf Z_k)$};
+
+  % --- component labels ---------------------------------------------------------
+  \node[right, align=left, orange_t] at (2*\dx+0.75,-0.3) {\textsf{inexpensive}\\\textsf{component}};
+  \node[right, align=left, blue_t] at (2*\dx+0.75,-2.35) {\textsf{expensive}\\\textsf{component}};
+  \node[right, align=left, mauve_t] at (2*\dx+0.75,-3.95) {\textsf{online}\\\textsf{neural solve}};
+\end{tikzpicture}

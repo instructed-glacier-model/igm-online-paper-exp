@@ -1,0 +1,5 @@
+case,architecture,learning_rate,cases,median_initial_speed_error_percent,median_first_speed_error_percent,median_final_speed_error_percent,first_update_increases
+aletsch,Backbone_5f,1e-05,9,1.3831115302117398,1.173750317849986,1.1058579442621095,0
+aletsch,Backbone_scrambled,1e-05,9,2.359092266058922,1.851978710599273,1.8153817392016507,1
+aletsch,Backbone_raw,1e-05,9,3.4409291704679843,2.5264336408027606,2.503069018132428,0
+aletsch,Backbone_3f,1e-05,9,1.777800587485831,1.3478461481659652,1.2542328182610043,0

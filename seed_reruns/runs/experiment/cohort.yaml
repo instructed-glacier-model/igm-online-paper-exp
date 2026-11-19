@@ -1,0 +1,520 @@
+configurations:
+  aletsch:
+    case: aletsch
+    input: glaciers/runs/data/aletsch.nc
+    metrics:
+      historical_ice_threshold: 1.0
+      speed_offset: 10.0
+      threshold_percent: 5.0
+    online: &id001
+      beta1: 0.8
+      beta2: 0.9995
+      clipnorm: 1.0
+      lr: 0.00034474492448167754
+      lr_init: 0.0014259294170264304
+      nbit: 3
+      nbit_init: 2200
+      retrain_freq: 3
+    physics:
+      Nz: 2
+      arrhenius: 78.0
+      cf_eswn: []
+      energy_components:
+      - viscosity
+      - gravity
+      - sliding
+      glen_exponent: 3.0
+      gravity: 9.81
+      horizontal: q1
+      ice_density: 910.0
+      ice_threshold: 0.1
+      imposed_bcs: []
+      max_sr: 1.0e+20
+      min_sr: 1.0e-20
+      sliding_exponent: 3.0
+      sliding_regularization: 1.0
+      slidingco: 0.0464
+      strain_regularization: 1.0e-05
+      u_ref: 100.0
+      use_mask_gr: false
+      vertical: molho
+      water_density: 1000.0
+      minimum_ice_thickness: 0.01
+      remove_rigid_body_modes: true
+    profile: paper
+    reference:
+      fp32_policy: retain_candidate
+      fp32_saved_frame_checks: true
+    runtime:
+      checkpoint_interval_seconds: 60.0
+      compress_checkpoints: false
+    solver:
+      adaptive_damping: false
+      block_iterations: 8
+      cg_max_iter: 300
+      cg_tol: 0.001
+      damping: 1.0e-12
+      independent_starts: true
+      line_search: armijo
+      max_blocks: 64
+      operator: banded
+      preconditioner: block_jacobi
+      probe_batch: 9
+      refinement_rms: 0.001
+      relative_gradient: 0.001
+      stagnant_blocks: 3
+      stagnation_rms: 1.0e-06
+      timeout_seconds: 14400
+      warm_start: false
+    sweep:
+      architectures:
+      - MLP
+      - CNN
+      - FNO2
+      - DahuNet_cnn_3f
+      - DahuNet_cnn_5f
+      - DahuNet_fno_3f
+      - DahuNet_fno_5f
+      - DahuNet_scramble
+      conditions:
+      - inclusive
+      pareto_trials: 500
+      population: 20
+      reevaluation_seeds:
+      - 0
+      - 1
+      - 2
+      trial_timeout_seconds: 14400
+      uniform_trials: 50
+    time:
+      cfl: 0.3
+      cfl_percentile: 100.0
+      end: 500.0
+      save: 10.0
+      slope_type: superbee
+      smb:
+      - - 0
+        - 0.009
+        - 0.005
+        - 3100
+        - 2.0
+      - - 200
+        - 0.009
+        - 0.005
+        - 3100
+        - 2.0
+      - - 300
+        - 0.009
+        - 0.005
+        - 2500
+        - 2.0
+      - - 500
+        - 0.009
+        - 0.005
+        - 3300
+        - 2.0
+      smb_update_frequency: 1.0
+      start: 200.0
+      step_max: 1.0
+    transfer:
+      anchor_interval: 10.0
+      anchor_lr: 0.0002
+      anchor_start: 200.0
+      anchor_steps: 20000
+      correction_lr: 5.0e-05
+      correction_steps: 10
+      count: 30
+      fine_dt: 0.1
+    validation_only: false
+  jakobshavn:
+    case: jakobshavn
+    input: glaciers/runs/data/jakobshavn.nc
+    metrics:
+      historical_ice_threshold: 1.0
+      selection_criterion: median
+      speed_offset: 10.0
+      threshold_percent: 5.0
+    online: &id002
+      beta1: 0.8
+      beta2: 0.9995
+      clipnorm: 1.0
+      lr: 0.00012443466404238334
+      lr_init: 0.0014259294170264304
+      nbit: 5
+      nbit_init: 2900
+      retrain_freq: 3
+    physics:
+      Nz: 2
+      arrhenius: 36.0
+      cf_eswn: []
+      energy_components:
+      - viscosity
+      - gravity
+      - sliding
+      - floating
+      glen_exponent: 3.0
+      gravity: 9.81
+      horizontal: q1
+      ice_density: 918.0
+      ice_threshold: 0.1
+      imposed_bcs: []
+      max_sr: 1.0e+20
+      min_sr: 1.0e-20
+      minimum_ice_thickness: 0.01
+      remove_rigid_body_modes: true
+      sliding_exponent: 3.0
+      sliding_regularization: 1.0
+      slidingco: 0.035
+      strain_regularization: 1.0e-05
+      u_ref: 100.0
+      use_mask_gr: true
+      vertical: molho
+      water_density: 1028.0
+      water_level: 0.0
+    profile: paper
+    reference:
+      fp32_policy: retain_candidate
+      fp32_saved_frame_checks: true
+    runtime:
+      checkpoint_interval_seconds: 60.0
+      compress_checkpoints: false
+    solver:
+      adaptive_damping: true
+      block_iterations: 8
+      cg_max_iter: 4000
+      cg_tol: 0.01
+      consecutive_updates: 3
+      damping: 1.0e-16
+      damping_min: 1.0e-26
+      independent_refinement_steps:
+      - 3
+      - 7
+      independent_rms: 1.0
+      independent_starts: true
+      line_search: armijo
+      max_blocks: 64
+      max_newton_iterations: 200
+      operator: banded
+      preconditioner: barotropic_multigrid
+      probe_batch: 9
+      refinement_rms: 0.001
+      relative_gradient: 0.001
+      stagnant_blocks: 3
+      stagnation_rms: 1.0e-06
+      stopping: marine_velocity
+      timeout_seconds: 14400
+      velocity_tolerance: 1.0
+      warm_start: false
+    sweep:
+      architectures:
+      - MLP
+      - CNN
+      - FNO2
+      - DahuNet_cnn_3f
+      - DahuNet_cnn_5f
+      - DahuNet_fno_3f
+      - DahuNet_fno_5f
+      - DahuNet_scramble
+      conditions:
+      - inclusive
+      pareto_trials: 500
+      population: 20
+      reevaluation_seeds:
+      - 0
+      - 1
+      - 2
+      trial_timeout_seconds: 14400
+      uniform_trials: 50
+    time:
+      calving:
+        c_max: 20000.0
+        k: 5.0
+      cfl: 0.3
+      cfl_percentile: 100.0
+      end: 10.0
+      marine:
+        front:
+          first_order: true
+          fixed: false
+          method: sub_grid
+          min_thickness: 5.0
+          sub_grid:
+            max_iterations: 10
+            residual: redistribute
+          threshold: flux
+        ratio_density: 0.8929961089494164
+        remove_rigid_body_modes: true
+        scheme: explicit
+      save: 1.0
+      slope_type: superbee
+      smb:
+      - - 0
+        - 0.005
+        - 0.001
+        - 900
+        - 0.5
+      smb_update_frequency: 1.0
+      start: 0.0
+      step_max: 1.0
+    transfer:
+      anchor_interval: 1.0
+      anchor_lr: 0.001
+      anchor_start: 1.0
+      anchor_steps: 20000
+      correction_lr: 5.0e-05
+      correction_steps: 10
+      count: 9
+      fine_dt: 0.05
+    validation_only: false
+models:
+  aletsch_CNN:
+    spec:
+      family: cnn
+      params:
+        activation: gelu
+        conv_ker_size: 3
+        nb_layers: 6
+        nb_out_filter: 64
+        residual: true
+    online: *id001
+  aletsch_FNO2:
+    spec:
+      family: fno
+      params:
+        modes1: 9
+        modes2: 9
+        padding: 9
+        use_grid: true
+        width: 24
+    online:
+      beta1: 0.8
+      beta2: 0.9995
+      clipnorm: 1.0
+      lr: 0.00015725905093251136
+      lr_init: 0.001229607110732572
+      nbit: 3
+      nbit_init: 500
+      retrain_freq: 3
+  aletsch_DahuNet_cnn_5f:
+    spec:
+      backend: cnn
+      family: dahunet
+      features:
+      - dsdx
+      - dsdy
+      - grad_s
+      - u_sia
+      - u_weertman
+      params:
+        conv_ker_size: 3
+        nb_layers: 4
+        nb_out_filter: 32
+        residual: true
+    online:
+      beta1: 0.8
+      beta2: 0.9995
+      clipnorm: 1.0
+      lr: 0.0005465412534320179
+      lr_init: 0.004793556713177311
+      nbit: 18
+      nbit_init: 800
+      retrain_freq: 25
+  aletsch_DahuNet_fno_5f:
+    spec:
+      backend: fno
+      family: dahunet
+      features:
+      - dsdx
+      - dsdy
+      - grad_s
+      - u_sia
+      - u_weertman
+      params:
+        modes1: 15
+        modes2: 15
+        padding: 9
+        use_grid: true
+        width: 40
+    online:
+      beta1: 0.8
+      beta2: 0.9995
+      clipnorm: 1.0
+      lr: 0.004247352698621209
+      lr_init: 0.0019431268738770344
+      nbit: 6
+      nbit_init: 500
+      retrain_freq: 3
+  jakobshavn_CNN:
+    spec:
+      family: cnn
+      params:
+        activation: gelu
+        conv_ker_size: 5
+        nb_layers: 12
+        nb_out_filter: 32
+        residual: false
+    online: *id002
+  jakobshavn_FNO2:
+    spec:
+      family: fno
+      params:
+        modes1: 8
+        modes2: 8
+        padding: 9
+        use_grid: true
+        width: 24
+    online:
+      beta1: 0.8
+      beta2: 0.9995
+      clipnorm: 1.0
+      lr: 0.004471244717761995
+      lr_init: 0.00792703173438913
+      nbit: 3
+      nbit_init: 800
+      retrain_freq: 3
+  jakobshavn_DahuNet_cnn_5f:
+    spec:
+      backend: cnn
+      family: dahunet
+      features:
+      - dsdx
+      - dsdy
+      - grad_s
+      - u_sia
+      - u_weertman
+      params:
+        conv_ker_size: 5
+        nb_layers: 6
+        nb_out_filter: 32
+        residual: true
+    online:
+      beta1: 0.8
+      beta2: 0.9995
+      clipnorm: 1.0
+      lr: 0.0003684419204349676
+      lr_init: 0.004036086211884803
+      nbit: 13
+      nbit_init: 2900
+      retrain_freq: 3
+  jakobshavn_DahuNet_fno_5f:
+    spec:
+      backend: fno
+      family: dahunet
+      features:
+      - dsdx
+      - dsdy
+      - grad_s
+      - u_sia
+      - u_weertman
+      params:
+        modes1: 7
+        modes2: 7
+        padding: 9
+        use_grid: true
+        width: 24
+    online:
+      beta1: 0.8
+      beta2: 0.9995
+      clipnorm: 1.0
+      lr: 0.0014681107023111566
+      lr_init: 0.0006108365573861801
+      nbit: 1
+      nbit_init: 300
+      retrain_freq: 1
+cases:
+- case: aletsch
+  architecture: CNN
+  seed: 0
+  model: aletsch_CNN
+- case: aletsch
+  architecture: CNN
+  seed: 1
+  model: aletsch_CNN
+- case: aletsch
+  architecture: CNN
+  seed: 2
+  model: aletsch_CNN
+- case: aletsch
+  architecture: FNO2
+  seed: 0
+  model: aletsch_FNO2
+- case: aletsch
+  architecture: FNO2
+  seed: 1
+  model: aletsch_FNO2
+- case: aletsch
+  architecture: FNO2
+  seed: 2
+  model: aletsch_FNO2
+- case: aletsch
+  architecture: DahuNet_cnn_5f
+  seed: 0
+  model: aletsch_DahuNet_cnn_5f
+- case: aletsch
+  architecture: DahuNet_cnn_5f
+  seed: 1
+  model: aletsch_DahuNet_cnn_5f
+- case: aletsch
+  architecture: DahuNet_cnn_5f
+  seed: 2
+  model: aletsch_DahuNet_cnn_5f
+- case: aletsch
+  architecture: DahuNet_fno_5f
+  seed: 0
+  model: aletsch_DahuNet_fno_5f
+- case: aletsch
+  architecture: DahuNet_fno_5f
+  seed: 1
+  model: aletsch_DahuNet_fno_5f
+- case: aletsch
+  architecture: DahuNet_fno_5f
+  seed: 2
+  model: aletsch_DahuNet_fno_5f
+- case: jakobshavn
+  architecture: CNN
+  seed: 0
+  model: jakobshavn_CNN
+- case: jakobshavn
+  architecture: CNN
+  seed: 1
+  model: jakobshavn_CNN
+- case: jakobshavn
+  architecture: CNN
+  seed: 2
+  model: jakobshavn_CNN
+- case: jakobshavn
+  architecture: FNO2
+  seed: 0
+  model: jakobshavn_FNO2
+- case: jakobshavn
+  architecture: FNO2
+  seed: 1
+  model: jakobshavn_FNO2
+- case: jakobshavn
+  architecture: FNO2
+  seed: 2
+  model: jakobshavn_FNO2
+- case: jakobshavn
+  architecture: DahuNet_cnn_5f
+  seed: 0
+  model: jakobshavn_DahuNet_cnn_5f
+- case: jakobshavn
+  architecture: DahuNet_cnn_5f
+  seed: 1
+  model: jakobshavn_DahuNet_cnn_5f
+- case: jakobshavn
+  architecture: DahuNet_cnn_5f
+  seed: 2
+  model: jakobshavn_DahuNet_cnn_5f
+- case: jakobshavn
+  architecture: DahuNet_fno_5f
+  seed: 0
+  model: jakobshavn_DahuNet_fno_5f
+- case: jakobshavn
+  architecture: DahuNet_fno_5f
+  seed: 1
+  model: jakobshavn_DahuNet_fno_5f
+- case: jakobshavn
+  architecture: DahuNet_fno_5f
+  seed: 2
+  model: jakobshavn_DahuNet_fno_5f

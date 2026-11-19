@@ -1,0 +1,12 @@
+parameter,name,kind,low,high,step,log,choices
+Initialization budget $m_0$,nbit_init,int,100,3000,100,,
+Correction budget $m$,nbit,int,1,20,,,
+Correction period $\ell$ (time steps),retrain_freq,int,1,50,,,
+Online learning rate,lr,float,5e-05,0.005,,True,
+Initial learning rate,lr_init,float,0.0001,0.01,,True,
+"Hidden layers (MLP, CNN)",nb_layers,int,2,16,2,,
+"Hidden width (MLP, CNN)",nb_out_filter,int,8,128,8,,
+CNN kernel size,conv_ker_size,categorical,,,,,"[3, 5, 7]"
+Residual connections,residual,categorical,,,,,"[true, false]"
+"FNO Fourier modes (each direction, tied)",modes1,int,4,16,,,
+FNO channel width,width,int,16,64,8,,

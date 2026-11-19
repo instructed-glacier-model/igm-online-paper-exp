@@ -1,0 +1,18 @@
+% Generated from data/tableSM1_3_glacier_settings.csv. Requires booktabs and array.
+\begin{tabular}{@{}p{.25\linewidth}p{.22\linewidth}p{.22\linewidth}p{.22\linewidth}@{}}
+\toprule
+ & Aletsch & Valais & Sermeq Kujalleq\\
+\midrule
+Type & land-terminating & land-terminating & marine-terminating \\
+Grid, spacing & 179 $\times$ 244, 100 m & 800 $\times$ 600, 100 m & 350 $\times$ 200, 150 m \\
+Forcing & ELA 3100, 2500, 3300 m at years 200, 300, 500 & ELA 2900, 2500, 3300 m at years 200, 300, 500 & water-depth-dependent calving; coefficient 5 / year \\
+Simulation period (yr) & 200--500 & 200--500 & 0--10 \\
+Saved frames & 31 & 31 & 11 \\
+Softness $A$ (MPa$^{-3}$ yr$^{-1}$) & 78 & 78 & 36 \\
+Transfer anchors (yr) & 200, 210, $\ldots$, 490 & 200, 210, $\ldots$, 490 & 1, 2, $\ldots$, 9 \\
+Increment (one time step, yr) & 0.1 & 0.05 & 0.05 \\
+Anchor learning rate & $2.0\phantom{0}\times10^{-4}$ & $2.0\phantom{0}\times10^{-3}$ & $1.0\phantom{0}\times10^{-3}$ \\
+Ablation backbone & CNN (6 layers, 24 filters) & CNN (6 layers, 24 filters) & FNO (4 blocks, width 24, 7 x 7 modes) \\
+Ablation anchors (yr) & 200, 350, 490 & 200, 350, 490 & 1, 5, 9 \\
+\bottomrule
+\end{tabular}

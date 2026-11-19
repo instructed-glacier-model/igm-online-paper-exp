@@ -1,0 +1,92 @@
+MLP:
+  family: mlp
+  params:
+    nb_layers: 4
+    nb_out_filter: 64
+    activation: gelu
+CNN:
+  family: cnn
+  params:
+    nb_layers: 6
+    nb_out_filter: 32
+    conv_ker_size: 3
+    residual: true
+    activation: gelu
+FNO2:
+  family: fno
+  params:
+    width: 24
+    modes1: 8
+    modes2: 8
+    padding: 9
+    use_grid: true
+DahuNet_cnn_3f:
+  family: dahunet
+  backend: cnn
+  features:
+  - dsdx
+  - dsdy
+  - grad_s
+  params:
+    nb_layers: 6
+    nb_out_filter: 24
+    conv_ker_size: 3
+    residual: true
+DahuNet_cnn_5f:
+  family: dahunet
+  backend: cnn
+  features:
+  - dsdx
+  - dsdy
+  - grad_s
+  - u_sia
+  - u_weertman
+  params:
+    nb_layers: 6
+    nb_out_filter: 24
+    conv_ker_size: 3
+    residual: true
+DahuNet_fno_3f:
+  family: dahunet
+  backend: fno
+  features:
+  - dsdx
+  - dsdy
+  - grad_s
+  params:
+    width: 24
+    modes1: 8
+    modes2: 8
+    padding: 9
+    use_grid: true
+DahuNet_fno_5f:
+  family: dahunet
+  backend: fno
+  features:
+  - dsdx
+  - dsdy
+  - grad_s
+  - u_sia
+  - u_weertman
+  params:
+    width: 24
+    modes1: 8
+    modes2: 8
+    padding: 9
+    use_grid: true
+DahuNet_scramble:
+  family: dahunet
+  backend: cnn
+  features:
+  - dsdx
+  - dsdy
+  - grad_s
+  - u_sia
+  - u_weertman
+  scramble: true
+  scramble_seed: 42
+  params:
+    nb_layers: 6
+    nb_out_filter: 24
+    conv_ker_size: 3
+    residual: true

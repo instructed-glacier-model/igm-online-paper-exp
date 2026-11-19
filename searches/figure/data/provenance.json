@@ -1,0 +1,561 @@
+{
+  "description": "Original published measurements; new 3.3.0 runs are separate.",
+  "studies": [
+    {
+      "case": "aletsch",
+      "sampler": "uniform",
+      "architecture": "MLP",
+      "manifest_sha256": "ead3b5f2864b306a9b662527dbaacc44649a6233edcb784e130ed8f4212b7608",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "c07bb72d71bd29173c8c101ae53660ca8036fcb3f7a87d96d61f6b0f5f01ce7d"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "uniform",
+      "architecture": "CNN",
+      "manifest_sha256": "98a016df0c85329df19141722a1afe571fc506f646e378b99990a0d2b30dc0a6",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "eae62c40adc24ce98abdfa09433c8659e36487a3c22d5c571fbe55baf9e5c24b"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "uniform",
+      "architecture": "FNO2",
+      "manifest_sha256": "f57aaaf3afd0f84ad7f202c831fa729c91bf66e7c0b8e9510cbc1ebc5278d9dd",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "65e38e9306fb617aafcd6d4d266a295348d8419e0f942a9398a10a47ff327261"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "uniform",
+      "architecture": "DahuNet_cnn_3f",
+      "manifest_sha256": "e6504abec8cf8bbd69508b49ec63fe36746e52ade48a90fde70793d16ce757e4",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "0795fe1bb680448635e52d74b8463cf51044ef6833b75df165b72830aeb71967"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "uniform",
+      "architecture": "DahuNet_cnn_5f",
+      "manifest_sha256": "ac9f3c7dc4291cb8cdcbfdc52c0e84aba0c1f85dc1985ece539707b690bb41ca",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "81324938032592264334865e9bf753adb12750e88e88e084c505e4477ee8964c"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "uniform",
+      "architecture": "DahuNet_fno_3f",
+      "manifest_sha256": "c50128d6fe8279b0e9c84a69adee4c2006c1becf9a450b7de88b20d1a25bdabb",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "9661cf526386305db1efa55cfa2c8689533f27586c31d347254a17cfc50207b1"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "uniform",
+      "architecture": "DahuNet_fno_5f",
+      "manifest_sha256": "1d1babc9e660a1ef1808d9e229e44fc7f2a3af759d2e339bfc0699da9d84e3da",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "b32792a5dd8178d34cdefc82f483ef8722700efbef214925f81d5fddd6785658"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "uniform",
+      "architecture": "DahuNet_scramble",
+      "manifest_sha256": "34762b98137d299c9ba6b4801a96bb9fdd12df85594415d9fc41d78d5d880f01",
+      "counts": {
+        "COMPLETE": 48,
+        "FAIL": 2
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "e8c926486a7a96e57299b4064ff5973606befdbc4ef3724e1d5f1da37704dea2"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "pareto",
+      "architecture": "MLP",
+      "manifest_sha256": "d8658d2b7976c440d147edf0fba5fb464de1ee41b797bd03ee0c12a4d8678f62",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "f73de612afadbba931721764b19a2d6ae959fa391fe12d100a3f3668a6762658"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "pareto",
+      "architecture": "CNN",
+      "manifest_sha256": "4099754da81063888e8a1e3a01a16c63275406891e21dfb1cea4747533d248aa",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "b952e746c34a425b8193e307af5edb12710acc751dd9b28423f4f1e9a23f8a91"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "pareto",
+      "architecture": "FNO2",
+      "manifest_sha256": "92c6fdaf8596a0fb9c1be6dfac7b96b22ddcb2b29eb9ec39efaf63c6afd7fc14",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "abd3d882fc9dda64f4e98762eab816d8812674679028f81293adb3930e387d98"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "pareto",
+      "architecture": "DahuNet_cnn_3f",
+      "manifest_sha256": "6c4dd6e05de0cbdc09c23510d555130e27de1dd7ee7550b194af02c3cdb51f9f",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "39b5ad0ac4fb33ea7e4222ad78beb7fc9cd8591a6efcfb1e3463ee47e1025c14"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "pareto",
+      "architecture": "DahuNet_cnn_5f",
+      "manifest_sha256": "19b890ff033b3e9671e791b93993fa4b4a67b5fe4b2b2b076f6ced54f0679b5a",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "0ea682c42dd7cd82b2c41c6703cf7e83ccd2a88a5a08e125d8783806a35db1d3"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "pareto",
+      "architecture": "DahuNet_fno_3f",
+      "manifest_sha256": "d5dafd3a1822d97461263473f7c34279ab5ee59f219b67dbede14bd350e25b90",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "b82db0fc4c9a7ec880868842ca46440c31a15834c7c08b2eb5f4ec7f70d90547"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "pareto",
+      "architecture": "DahuNet_fno_5f",
+      "manifest_sha256": "7c0eaa9db9a5d7936d9cf5fe89f8582ded08950f04b50eec5d7d41a9fc4e6ba5",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "392efe7ad2f16257f69e6d8c26cf5b1427231e6280f6f0634ba15f24c8c3998c"
+    },
+    {
+      "case": "aletsch",
+      "sampler": "pareto",
+      "architecture": "DahuNet_scramble",
+      "manifest_sha256": "8a6da82fd7824a5fb69f54c7d0be495de92a910c1fdf28b1f780a312060edc0a",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "1811ece64bd8a9b46dc218f2172f82476c7ade8385af718e6a489d97d9bb813a",
+      "signature": "545b698bf977b5f21d7d31d5d03d909194509e8d7be7f846b1f7f33482b59b8f"
+    },
+    {
+      "case": "valais",
+      "sampler": "uniform",
+      "architecture": "MLP",
+      "manifest_sha256": "362add0bdb2d629ec14f1f71ff5f90573a285a0c605d20c2099638213ae97b21",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "c8563d4d66d501a063e19bf020d85d382b962a624b1b3520f73926ff6a6936e7"
+    },
+    {
+      "case": "valais",
+      "sampler": "uniform",
+      "architecture": "CNN",
+      "manifest_sha256": "4ca8d313a17b9374b0053615e0c6097cd66f6a5cb1304267b226b8cb36d09e78",
+      "counts": {
+        "COMPLETE": 48,
+        "FAIL": 2
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "e24ac8f54d4001f92c31f0501c5c1024afc46edfed8ac400f6aff32898c89f85"
+    },
+    {
+      "case": "valais",
+      "sampler": "uniform",
+      "architecture": "FNO2",
+      "manifest_sha256": "6a98da05888b306cf40ebfaf7886290a7ef92a8ddeebc1a85c3bf20281b7c046",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "8d7aa3a410b76eb6ba07665bba94457ecdb3b02b3934818a618183ad4c51f762"
+    },
+    {
+      "case": "valais",
+      "sampler": "uniform",
+      "architecture": "DahuNet_cnn_3f",
+      "manifest_sha256": "ae954ebad0c44a1acbf6590433e85474c8d023e5b2a8afa4bf03a05552dfaf3f",
+      "counts": {
+        "COMPLETE": 47,
+        "FAIL": 3
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "6bdead8d7f6ab4ca3c12ea19eda0d4bd8d0288b5b9dc19854b1bb180fcaa4d70"
+    },
+    {
+      "case": "valais",
+      "sampler": "uniform",
+      "architecture": "DahuNet_cnn_5f",
+      "manifest_sha256": "f30dc20af3eddb217f1c2af7f92348d37a5ac75546f09ee62b3e4f3cc49d4d47",
+      "counts": {
+        "COMPLETE": 49,
+        "FAIL": 1
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "f64a063d01d4cd5a061eb11f59fe551795f5895f6ea314bf4b0763c9acb07a27"
+    },
+    {
+      "case": "valais",
+      "sampler": "uniform",
+      "architecture": "DahuNet_fno_3f",
+      "manifest_sha256": "bcf5f61834d1088a598cd36d362009cafe99b9afc0d0489a4a53f1bf79a0844f",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "fa31553d74765129c89930b6da3e79e3d6dfedf8d1ac0e24c95b7b08df9905a2"
+    },
+    {
+      "case": "valais",
+      "sampler": "uniform",
+      "architecture": "DahuNet_fno_5f",
+      "manifest_sha256": "9df7bbf734a314bbbc72be01a4f5fee5cae5d75fbabd3ad7ef73434316f922a1",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "baa06dd9bcef6ee3676f440a6221ab8ba7f9bf74428965de48be167f75ce220e"
+    },
+    {
+      "case": "valais",
+      "sampler": "uniform",
+      "architecture": "DahuNet_scramble",
+      "manifest_sha256": "e1009820ad997983ee3013427ccb274be66a4d79daf87db7cd8f3e3f63dd4923",
+      "counts": {
+        "COMPLETE": 47,
+        "FAIL": 3
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "3175f255f7c328d0e775b3644c4cac992a43aa2d438d4ec1dc92d2f8e2753c0f"
+    },
+    {
+      "case": "valais",
+      "sampler": "pareto",
+      "architecture": "MLP",
+      "manifest_sha256": "ba38bc0d57f802d169c255ec52ea0ada5855231a8aab8cde9443ad7754c572c2",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "7781857e383d99e5d1e131d63397f7ccd3d995da3433d826a28628a6bd252d65"
+    },
+    {
+      "case": "valais",
+      "sampler": "pareto",
+      "architecture": "CNN",
+      "manifest_sha256": "66e4207bf4b8dd2c95edfab1fbee6b57aade2e3c3275d8127bb7b17e72abd70a",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "e495e2e72385d25c7561a6e3f2053c4f7de446a0cc6a42309500c25c2ebdd27a"
+    },
+    {
+      "case": "valais",
+      "sampler": "pareto",
+      "architecture": "FNO2",
+      "manifest_sha256": "dd665453177ca60fe01f819157839113effacaf237aa933b03a63ce24440796d",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "b93e0568d46f15dd6717e6a0aaa0c79ae5ef6099e96a18f4077dff8b13aee4b6"
+    },
+    {
+      "case": "valais",
+      "sampler": "pareto",
+      "architecture": "DahuNet_cnn_3f",
+      "manifest_sha256": "ec5168a497d937fb177fd8947f144a5b9f489381a36f4901e7fb5373f6a6ada5",
+      "counts": {
+        "COMPLETE": 498,
+        "FAIL": 2
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "696b3ac6355a0b3e78259da9bd08b42cd9876fab89b1727a201f23f4128caa69"
+    },
+    {
+      "case": "valais",
+      "sampler": "pareto",
+      "architecture": "DahuNet_cnn_5f",
+      "manifest_sha256": "ebd47c17ce6f0bcebecf3c02529da40dc65fce895644629f2aa7d661d6b32be6",
+      "counts": {
+        "COMPLETE": 498,
+        "FAIL": 2
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "0e77e81fa31593bf4369d471ecdeff62ffad11342bd4b5e1beb5297aefce88a4"
+    },
+    {
+      "case": "valais",
+      "sampler": "pareto",
+      "architecture": "DahuNet_fno_3f",
+      "manifest_sha256": "845f89596a002aadd1502d0841d9470eb70bf77d7700826fcbbd2ea8ddbefed6",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "2c4004910bd43206b38e027b3223f9b148806a8aef7ef3701322a7ed17c4a482"
+    },
+    {
+      "case": "valais",
+      "sampler": "pareto",
+      "architecture": "DahuNet_fno_5f",
+      "manifest_sha256": "45190c7a08b6005708d10347f4b084736b27f97bfbd07eee62b9814dd116e202",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "9776ffe347a8527d1cc908f3381fdc8f882a4ee4f53d526ab59479d4e3ca62bd"
+    },
+    {
+      "case": "valais",
+      "sampler": "pareto",
+      "architecture": "DahuNet_scramble",
+      "manifest_sha256": "0876193b97baade5d3563e202a246276ff52cd15cacc47737fd6f0f46e811ea8",
+      "counts": {
+        "COMPLETE": 498,
+        "FAIL": 2
+      },
+      "input_sha256": "26740779efe1025d6f237e0155f28194ef2d82635a7d7b393e719eaf49e7109c",
+      "signature": "df3432f54adc6789fd8be1b1e6258e577cd308aeeee2a0bbe316465aa5ca2a70"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "uniform",
+      "architecture": "MLP",
+      "manifest_sha256": "e70f342618fc5a1c21a66e3ef38d855979a403251733b36fc1795c15ade32315",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "232d5168dfee381fc5e5c7e30d467a5fe486397f823842dcd590c25cdba8f8ff"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "uniform",
+      "architecture": "CNN",
+      "manifest_sha256": "4f325f9e11360a7cc8ef975356e5b24012a0b91fa3d6e79b9f150d3f5206907b",
+      "counts": {
+        "COMPLETE": 49,
+        "FAIL": 1
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "d0d7b21f3cde9e4151d4f464775d18914d634ed0965473ce192d3bf698b4fe79"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "uniform",
+      "architecture": "FNO2",
+      "manifest_sha256": "ed342ba605c18537af18215010d85e2493b10b74546874826f285584a44d6486",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "4cc315961ef817867556d3c400f9aa51c38e791ca0bec5a18c6484359a8f706b"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "uniform",
+      "architecture": "DahuNet_cnn_3f",
+      "manifest_sha256": "55bd30e5a7a1c9ef73100223bddd6fdf37ef5ab537423289d182870f51ae92b2",
+      "counts": {
+        "COMPLETE": 49,
+        "FAIL": 1
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "c8de717351f6b6dd6b171ca6b349226a9337f880436111882c6e849cf53355f0"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "uniform",
+      "architecture": "DahuNet_cnn_5f",
+      "manifest_sha256": "affa0682732d415f07f0d9f552d5e3a93a8934cc1a9d8c7079c736149b3b14c9",
+      "counts": {
+        "COMPLETE": 49,
+        "FAIL": 1
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "62281629450286e87bc29fbe64a59c1aa19f78d5d98bc2a2ce6dfdebc312b56e"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "uniform",
+      "architecture": "DahuNet_fno_3f",
+      "manifest_sha256": "2c13d23485ced76f7915c6bb75e656e78636b3d7f58b168860c007c32730ff5b",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "e46668e0fb0c4f05bacdfd477026887c1fdaf64391b5e285e1f846aba8ea1148"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "uniform",
+      "architecture": "DahuNet_fno_5f",
+      "manifest_sha256": "bde7affab0948106581884f57367e4ea8f13d457bab6f744d88e4ecf085b97f6",
+      "counts": {
+        "COMPLETE": 50
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "8af46f8624595315e10c0ed773f3e7e80afc63982f745a10899be0b52e48eaf3"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "uniform",
+      "architecture": "DahuNet_scramble",
+      "manifest_sha256": "741c47f4fb0e8fd44126cbcf305ab05310be7bfd64281c7021b4d811b2ec305c",
+      "counts": {
+        "COMPLETE": 49,
+        "FAIL": 1
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "5ab14c377c0a69d14d59cd530e63078ff90298d8dfab4c97e949f605e217b7fb"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "pareto",
+      "architecture": "MLP",
+      "manifest_sha256": "cf06d56a125810299067f5f2858409261cb35c9fc3498eb581fcd80cda4a67b5",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "4fde5601d5248f3e85d040251d2fca7c99890b11618ffb19b04b747f8d2a44ef"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "pareto",
+      "architecture": "CNN",
+      "manifest_sha256": "5193f23c392be9e4d4e88ad9962d1340f003e5abe9c08d7031e7f447b3223588",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "b5c99a3caddf197544d04e918362389bb9e53e1e7744a06dc263245a13e10b61"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "pareto",
+      "architecture": "FNO2",
+      "manifest_sha256": "4abad883d0472b59ac70ac74de6958bdbae84e94c1074be8ed6179a0d465c44e",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "c35155e59a5513ba9a948dbc6400727c238dffb77dec4474d4307c52d3953bdb"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "pareto",
+      "architecture": "DahuNet_cnn_3f",
+      "manifest_sha256": "09c6009fc7c8ff5bc771af2563cd63e8941e168c007564513d566bfb47e2d62d",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "ae069fb9aaae435db7196c233afd4e8668a322c22ef807cd424439b35af91aab"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "pareto",
+      "architecture": "DahuNet_cnn_5f",
+      "manifest_sha256": "deb059a6eea2becf2b30eb654a178e5ec88bf0758552bd9ba5b4664ffdb2555d",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "ca610b4ccf6aa376a5d238f0e1d8c1cd225bffc0768050c4984f125e8085915a"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "pareto",
+      "architecture": "DahuNet_fno_3f",
+      "manifest_sha256": "2d42a43f1fa8f1189ae76871ba1bb14a28c774771b64479081d57cee8b17f836",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "b173168a1d751e7c451c017fc186f9d639c63eed67c9162058230dc57f298a61"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "pareto",
+      "architecture": "DahuNet_fno_5f",
+      "manifest_sha256": "adb8f367f1192d1c883a386dd5d583d1b4e0d8c07715911bdf2bab384328971f",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "57dd7a1138d4f04946ba2f06b9a6d48d818a32a5b475d8962fdbe2e5261f6687"
+    },
+    {
+      "case": "jakobshavn",
+      "sampler": "pareto",
+      "architecture": "DahuNet_scramble",
+      "manifest_sha256": "a22184cce1a25692978120b5fc1afc103927b8357e338775c335b53db5f98253",
+      "counts": {
+        "COMPLETE": 500
+      },
+      "input_sha256": "9f6db5f5550dce8b8027b96719813da5d487b7de68cb417816ca8248f00f2093",
+      "signature": "f38a6afa7e6497a20274508b6d31dbcc7e8cd694ea63127e4dfb66dd44d21af1"
+    }
+  ],
+  "original_IGM_commits": {
+    "46c41c5d61c279030fb3229627c7a44cb8fcd0fa": 13179
+  },
+  "software_environments": [
+    {
+      "keras": "3.12.2",
+      "matplotlib": "3.10.9",
+      "netCDF4": "1.7.4",
+      "numpy": "1.26.4",
+      "omegaconf": "2.3.0",
+      "optuna": "4.9.0",
+      "scipy": "1.15.3",
+      "tensorflow": "2.17.0"
+    }
+  ],
+  "source_note": "Measured runs retain their original source metadata. Per-study wheel hashes were not present in historical coordinator manifests; original reference package hashes are retained with the reference records. These measurements are not newly executed 3.3.0 timings."
+}

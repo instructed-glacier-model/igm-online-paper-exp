@@ -1,0 +1,18 @@
+% Generated from data/tableSM1_1_search_settings.csv. Requires booktabs and amsmath.
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrr@{}}
+\toprule
+Parameter & Range or choices & Sampling\\
+\midrule
+Initialization budget $m_0$ & $[100, 3000]$ & integer, step 100 \\
+Correction budget $m$ & $[1, 20]$ & integer \\
+Correction period $\ell$ (time steps) & $[1, 50]$ & integer \\
+Online learning rate & $[5\times10^{-5}, 5\times10^{-3}]$ & log-uniform \\
+Initial learning rate & $[10^{-4}, 0.01]$ & log-uniform \\
+Hidden layers (MLP, CNN) & $[2, 16]$ & integer, step 2 \\
+Hidden width (MLP, CNN) & $[8, 128]$ & integer, step 8 \\
+CNN kernel size & $\{3, 5, 7\}$ & categorical \\
+Residual connections & $\{yes, no\}$ & categorical \\
+FNO Fourier modes (each direction, tied) & $[4, 16]$ & integer \\
+FNO channel width & $[16, 64]$ & integer, step 8 \\
+\bottomrule
+\end{tabular*}

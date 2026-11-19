@@ -1,0 +1,4 @@
+case,grid,spacing_m,type,forcing,start_year,end_year,saved_frames,arrhenius,anchor_start,anchor_interval,anchor_count,increment_years,anchor_lr,ablation_backbone,ablation_anchors
+aletsch,179 x 244,100,land-terminating,"ELA 3100, 2500, 3300 m at years 200, 300, 500",200.0,500.0,31,78.0,200.0,10.0,30,0.1,0.0002,"CNN (6 layers, 24 filters)","200, 350, 490"
+valais,800 x 600,100,land-terminating,"ELA 2900, 2500, 3300 m at years 200, 300, 500",200.0,500.0,31,78.0,200.0,10.0,30,0.05,0.002,"CNN (6 layers, 24 filters)","200, 350, 490"
+jakobshavn,350 x 200,150,marine-terminating,water-depth-dependent calving; coefficient 5 / year,0.0,10.0,11,36.0,1.0,1.0,9,0.05,0.001,"FNO (4 blocks, width 24, 7 x 7 modes)","1, 5, 9"

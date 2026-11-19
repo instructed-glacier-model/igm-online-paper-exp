@@ -1,0 +1,121 @@
+case: aletsch
+input: glaciers/runs/data/aletsch.nc
+metrics:
+  historical_ice_threshold: 1.0
+  speed_offset: 10.0
+  threshold_percent: 5.0
+online:
+  beta1: 0.8
+  beta2: 0.9995
+  clipnorm: 1.0
+  lr: 0.0005
+  lr_init: 0.002
+  nbit: 5
+  nbit_init: 5000
+  retrain_freq: 10
+physics:
+  Nz: 2
+  arrhenius: 78.0
+  cf_eswn: []
+  energy_components:
+  - viscosity
+  - gravity
+  - sliding
+  glen_exponent: 3.0
+  gravity: 9.81
+  horizontal: q1
+  ice_density: 910.0
+  ice_threshold: 0.1
+  imposed_bcs: []
+  max_sr: 1.0e+20
+  min_sr: 1.0e-20
+  sliding_exponent: 3.0
+  sliding_regularization: 1.0
+  slidingco: 0.0464
+  strain_regularization: 1.0e-05
+  u_ref: 100.0
+  use_mask_gr: false
+  vertical: molho
+  water_density: 1000.0
+  minimum_ice_thickness: 0.01
+  remove_rigid_body_modes: true
+profile: paper
+reference:
+  fp32_policy: retain_candidate
+  fp32_saved_frame_checks: true
+solver:
+  adaptive_damping: false
+  block_iterations: 8
+  cg_max_iter: 300
+  cg_tol: 0.001
+  damping: 1.0e-12
+  independent_starts: true
+  line_search: armijo
+  max_blocks: 64
+  operator: banded
+  preconditioner: block_jacobi
+  probe_batch: 9
+  refinement_rms: 0.001
+  relative_gradient: 0.001
+  stagnant_blocks: 3
+  stagnation_rms: 1.0e-06
+  timeout_seconds: 14400
+  warm_start: false
+sweep:
+  architectures:
+  - MLP
+  - CNN
+  - FNO2
+  - DahuNet_cnn_3f
+  - DahuNet_cnn_5f
+  - DahuNet_fno_3f
+  - DahuNet_fno_5f
+  - DahuNet_scramble
+  pareto_trials: 500
+  population: 20
+  reevaluation_seeds:
+  - 0
+  - 1
+  - 2
+  trial_timeout_seconds: 14400
+  uniform_trials: 50
+time:
+  cfl: 0.3
+  cfl_percentile: 100.0
+  end: 500.0
+  save: 10.0
+  slope_type: superbee
+  smb:
+  - - 0
+    - 0.009
+    - 0.005
+    - 3100
+    - 2.0
+  - - 200
+    - 0.009
+    - 0.005
+    - 3100
+    - 2.0
+  - - 300
+    - 0.009
+    - 0.005
+    - 2500
+    - 2.0
+  - - 500
+    - 0.009
+    - 0.005
+    - 3300
+    - 2.0
+  smb_update_frequency: 1.0
+  start: 200.0
+  step_max: 1.0
+transfer:
+  anchor_interval: 10.0
+  anchor_lr: 0.0002
+  anchor_start: 200.0
+  anchor_steps: 20000
+  correction_lr: 5.0e-05
+  correction_steps: 10
+  count: 30
+  fine_dt: 0.1
+validation_only: false

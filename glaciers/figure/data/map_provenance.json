@@ -1,0 +1,28 @@
+{
+  "aletsch": {
+    "source": "revised validated FP64 reference",
+    "frame": "t400.00000000.npz",
+    "time": 400.0,
+    "ice_cells": 8763,
+    "frame_sha256": "27671b43307c85e5158ccece2baf2f202c3d1f7f3c1ad31a4365cf44f3e79f19",
+    "velocity": "depth-averaged vector velocity",
+    "selection": "Largest count of cells with thickness >1 m; earliest saved frame breaks ties"
+  },
+  "jakobshavn": {
+    "source": "revised validated FP64 reference",
+    "frame": "t0.00000000.npz",
+    "time": 0.0,
+    "ice_cells": 62972,
+    "frame_sha256": "217a6bd4a5101aa5e531e5c5a6e0e674a58ee2cfae8386a4c40a7daeb024a82c",
+    "velocity": "depth-averaged vector velocity",
+    "selection": "Largest count of cells with thickness >1 m; earliest saved frame breaks ties"
+  },
+  "valais": {
+    "time": 330.0,
+    "ice_cells": 226048,
+    "selection": "Largest thk > 1 m footprint; earliest frame breaks ties",
+    "velocity": "Depth-averaged vector, FP64 canonical revised reference",
+    "source_frame_sha256": "21bef6a353007d6ade39c799f055b4e1e97000981cd5eb9234068ef1c2d3926e",
+    "source": "revised validated FP64 reference"
+  }
+}

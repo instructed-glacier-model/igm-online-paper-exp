@@ -1,0 +1,4 @@
+case,architecture,trial,steps,steady_seconds,seconds_per_step
+aletsch,DahuNet_cnn_5f,375,1787,28.864056850317866,0.016152242221778326
+valais,DahuNet_cnn_5f,407,3754,72.86371816438623,0.019409621247838633
+jakobshavn,DahuNet_fno_5f,495,1171,89.02333259722218,0.07602334124442543

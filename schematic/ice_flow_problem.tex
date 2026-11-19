@@ -1,0 +1,129 @@
+% Cross-section of the ice-flow problem along a flowline (section 3.1).
+% Grounded ice from a land margin (left, h = 0) over an ice divide to a grounding
+% line, followed by a floating ice shelf that ends at a calving front.
+% Notation follows section 3: s, l, h, b, z_sl, Omega, Gamma_b, Gamma_cf, omega,
+% u, tau_b, p_w, c, and the surface mass balance a-dot.
+% The bed slopes gently seaward. The shelf obeys the flotation relation (3.8)
+% with rho/rho_w = 0.89: l = z_sl - 0.89 h and s = z_sl + 0.11 h, with h = 1.25
+% at the grounding line and h = 0.75 at the front; sea level is set so that the
+% bed passes through the grounding-line base.
+% Requires the TikZ libraries arrows.meta and intersections.
+\definecolor{icefill}{RGB}{224,239,250}
+\definecolor{iceline}{RGB}{100,150,200}
+\definecolor{bedfill}{RGB}{216,203,185}
+\definecolor{bedline}{RGB}{130,105,80}
+\definecolor{seafill}{RGB}{176,209,236}
+\definecolor{seadark}{RGB}{30,80,130}
+\definecolor{smbcol}{RGB}{31,119,180}
+\definecolor{velcol}{RGB}{20,55,110}
+\definecolor{dragcol}{RGB}{190,75,35}
+\begin{tikzpicture}[scale=0.92, every node/.style={font=\footnotesize},
+    declare function={
+      bed(\x)=2.45-0.25*\x+0.06*sin(deg(1.6*\x));},
+    smb/.style={-{Stealth[length=1.5mm,width=1.3mm]}, draw=smbcol, semithick},
+    vel/.style={-{Stealth[length=1.5mm,width=1.3mm]}, draw=velcol, semithick},
+    pw/.style={-{Stealth[length=1.1mm,width=1.0mm]}, draw=seadark}]
+
+  % --- constants ------------------------------------------------------------
+  \def\xm{0.5793}  % land margin (h = 0)
+  \def\xg{6.41}    % grounding line
+  \def\xf{8.3}     % calving front
+  \def\xr{9.4}     % right end of the drawing
+  \def\zsl{1.9157} % sea level
+  \def\zbot{-0.2}
+  \def\sg{2.053}   \def\lg{0.8032}  % shelf surfaces at the grounding line
+  \def\sf{1.998}   \def\lf{1.248}   % shelf surfaces at the front
+  \pgfmathsetmacro{\bmar}{bed(\xm)}
+
+  % --- bodies ---------------------------------------------------------------
+  % ocean: open water and the cavity below the shelf
+  \fill[seafill] (\xg,\lg) -- plot[domain=\xg:\xr, samples=50] (\x,{bed(\x)})
+    -- (\xr,\zsl) -- (\xg,\zsl) -- cycle;
+  % bed
+  \fill[bedfill] (0,\zbot) -- plot[domain=0:\xr, samples=120] (\x,{bed(\x)})
+    -- (\xr,\zbot) -- cycle;
+  \draw[bedline, thick] plot[domain=0:\xr, samples=120] (\x,{bed(\x)});
+  % ice: grounded surface (named for label placement), shelf, front, base
+  \path[name path=surf] (\xm,\bmar) to[out=62, in=180] (3.0,3.66) to[out=0, in=160] (\xg,\sg);
+  \filldraw[fill=icefill, draw=iceline, thick, line join=round]
+    (\xm,\bmar) to[out=62, in=180] (3.0,3.66) to[out=0, in=160] (\xg,\sg)
+    -- (\xf,\sf) -- (\xf,\lf) -- (\xg,\lg)
+    -- plot[domain=\xg:\xm, samples=80] (\x,{bed(\x)}) -- cycle;
+  \draw[seadark] (\xf,\zsl) -- (\xr,\zsl);
+  % grounding line
+  \fill[black] (\xg,\lg) circle (1.1pt);
+
+  % helper: surface point above a given x (intersection with a vertical line)
+  \newcommand*{\surfat}[2]{%
+    \path[name path=vline#2, overlay] (#1,-3) -- (#1,6);
+    \path[name intersections={of=surf and vline#2, by=#2}];}
+
+  % --- body labels ----------------------------------------------------------
+  \node[font=\normalsize] at (3.1,2.75) {$\Omega$};
+  \node[bedline!85!black] at (1.3,1.1) {bed};
+  \node[bedline!85!black, above, inner sep=1.5pt] at (0.25,{bed(0.25)}) {$b$};
+  \node[seadark] at (8.95,0.85) {ocean};
+
+  % --- thickness and surfaces -----------------------------------------------
+  \surfat{2.0}{Ph}
+  \pgfmathsetmacro{\lh}{bed(2.0)}
+  \draw[<->, >={Stealth[length=1.3mm,width=1.1mm]}] (2.0,\lh+0.03) -- ($(Ph)+(0,-0.03)$);
+  \node[right, inner sep=1.5pt] at ($(2.0,\lh)!0.5!(Ph)$) {$h$};
+  \node[above, inner sep=1.5pt] at (Ph) {$s$};
+  \node[below, inner sep=1.5pt] at (2.0,\lh-0.02) {$l$};
+
+  % --- shelf: lower surface above the bed, no friction ----------------------
+  \node[below, inner sep=1.5pt] at (7.15,{\lg+(\lf-\lg)*(7.15-\xg)/(\xf-\xg)}) {$l$};
+  \node[bedline!85!black, above, inner sep=1.5pt] at (8.45,{bed(8.45)}) {$b$};
+
+  % --- velocity -------------------------------------------------------------
+  % grounded ice: sliding at the base and vertical shear
+  \surfat{4.3}{Pu}
+  \pgfmathsetmacro{\lp}{bed(4.3)}
+  \path let \p1=(Pu) in \pgfextra{\pgfmathsetmacro{\hp}{\y1/1cm/0.92-\lp}\xdef\hp{\hp}};
+  \draw[velcol, thin] (4.3,\lp) -- (4.3,{\lp+0.90*\hp});
+  \foreach \f/\len in {0.08/0.30, 0.34/0.48, 0.60/0.58, 0.86/0.62}
+    {\draw[vel] (4.3,{\lp+\f*\hp}) -- ++(\len,0);}
+  % profile through the arrow tips: sliding at the base, shear above
+  \draw[velcol, thick] (4.3,\lp) -- (4.60,\lp)
+    .. controls (4.70,{\lp+0.15*\hp}) and (4.80,{\lp+0.30*\hp}) .. (4.78,{\lp+0.34*\hp})
+    .. controls (4.84,{\lp+0.45*\hp}) and (4.88,{\lp+0.55*\hp}) .. (4.88,{\lp+0.60*\hp})
+    .. controls (4.90,{\lp+0.72*\hp}) and (4.92,{\lp+0.82*\hp}) .. (4.92,{\lp+0.86*\hp})
+    -- (4.92,{\lp+0.90*\hp});
+  \node[velcol, inner sep=1pt] at (5.15,{\lp+1.02*\hp}) {$\bm u$};
+
+  % --- basal traction on the grounded part of Gamma_b ------------------------
+  \draw[dragcol, thick, -{Straight Barb[right, length=1.6mm, width=1.4mm]}]
+    (3.95,{bed(3.95)+0.15}) -- (3.35,{bed(3.35)+0.15});
+  \node[dragcol, above, inner sep=1.5pt] at (3.65,{bed(3.65)+0.24}) {$\tau_{\mathrm b}$};
+  \node[bedline!85!black] at (5.0,{bed(5.0)-0.32}) {$\Gamma_{\mathrm b}$};
+
+  % --- surface mass balance -------------------------------------------------
+  \foreach \x/\nm in {2.55/A1, 3.0/A2, 3.45/A3}
+    {\surfat{\x}{\nm}
+     \draw[smb] ($(\nm)+(0,0.48)$) -- ($(\nm)+(0,0.05)$);}
+  \node[smbcol, above, inner sep=1pt] at ($(A2)+(0,0.5)$) {$\dot a$};
+
+  % --- calving front: hydrostatic water pressure on the submerged face -------
+  \pgfmathsetmacro{\kp}{0.9}
+  \pgfmathsetmacro{\xe}{\xf+\kp*(\zsl-\lf)}
+  \fill[seadark, fill opacity=0.12] (\xf,\zsl) -- (\xe,\lf) -- (\xf,\lf) -- cycle;
+  \draw[seadark] (\xf,\zsl) -- (\xe,\lf);
+  \foreach \d in {0.22, 0.42, 0.62}
+    {\pgfmathsetmacro{\zz}{\zsl-\d}
+     \draw[pw] ({\xf+\kp*\d},\zz) -- (\xf+0.015,\zz);}
+  \node[seadark, right, inner sep=1pt] at ({\xf+\kp*0.5+0.05},{\zsl-0.3}) {$p_{\mathrm w}$};
+  \node[iceline!60!black, right, inner sep=1.5pt] at (\xf+0.02,{\sf+0.22}) {$\Gamma_{\mathrm{cf}}$};
+
+  % --- axes and footprint ---------------------------------------------------
+  \draw[->] (0,\zbot-0.25) -- (\xr+0.2,\zbot-0.25) node[right] {$(x,y)$};
+  \draw[->] (-0.25,\zbot) -- (-0.25,4.35) node[above] {$z$};
+  \draw (-0.33,\zsl) -- (-0.17,\zsl);
+  \node[left, inner sep=2pt] at (-0.33,\zsl) {$z_{\mathrm{sl}}$};
+  \draw[iceline, very thick] (\xm,\zbot-0.25) -- (\xf,\zbot-0.25);
+  \node[iceline!60!black, below] at ({0.5*(\xm+\xf)},\zbot-0.3) {$\omega$};
+  \foreach \x in {\xm,\xg,\xf} {\draw (\x,\zbot-0.17) -- (\x,\zbot-0.33);}
+  \node[below, align=center] at (\xm,\zbot-0.33) {land margin\\[-1pt]$h=0$};
+  \node[below, align=center] at (\xg,\zbot-0.33) {grounding\\[-1pt]line};
+  \node[below, align=center] at (\xf,\zbot-0.33) {calving front\\[-1pt]$h>0$};
+\end{tikzpicture}

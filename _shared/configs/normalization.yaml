@@ -1,0 +1,24 @@
+- input: Ice thickness $h$
+  unit: m
+  offset: 0
+  scale: 200
+- input: Surface elevation $s$
+  unit: m
+  offset: 1500
+  scale: 1000
+- input: Ice softness $A$
+  unit: MPa$^{-3}$ yr$^{-1}$
+  offset: 78
+  scale: 40
+- input: Friction coefficient $c$
+  unit: MPa
+  offset: 0.15
+  scale: 0.063
+- input: Grid spacing
+  unit: m
+  offset: 100
+  scale: 100
+- input: Sea level (marine glacier)
+  unit: m
+  offset: 0
+  scale: 500

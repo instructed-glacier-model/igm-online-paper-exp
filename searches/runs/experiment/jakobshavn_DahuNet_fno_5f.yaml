@@ -1,0 +1,325 @@
+# @package _global_
+defaults:
+- override /inputs:
+  - local
+- override /processes:
+  - online_initialize
+  - smb
+  - calving_rate
+  - time
+  - thk
+  - online_geometry
+  - iceflow
+  - online_save
+- override /outputs: []
+core:
+  check_compat_params: false
+  check_module_needs: false
+  print_info: false
+  print_params: false
+  hardware:
+    visible_gpus:
+    - 0
+hydra:
+  run:
+    dir: ${hydra:runtime.cwd}/../../results/rerun/jakobshavn/paper/online/DahuNet_fno_5f/seed51840855/engine/${now:%Y%m%d_%H%M%S_%f}
+  job:
+    chdir: true
+inputs:
+  local:
+    filename: ${hydra:runtime.cwd}/../../glaciers/runs/data/jakobshavn.nc
+    coarsening:
+      ratio: 1
+    crop: {}
+    water_level:
+      include: true
+      value: 0.0
+processes:
+  smb:
+    method: simple
+    simple:
+      update_freq: 1.0
+      array:
+      - - time
+        - gradabl
+        - gradacc
+        - ela
+        - accmax
+      - &id004
+        - 0
+        - 0.005
+        - 0.001
+        - 900
+        - 0.5
+  time:
+    start: 0.0
+    end: 10.0
+    save: 1.0
+    cfl: 0.3
+    cfl_percentile: 100.0
+    step_max: 1.0
+  thk:
+    slope_type: superbee
+    remove_rigid_body_modes: true
+    ratio_density: 0.8929961089494164
+    front:
+      first_order: true
+      fixed: false
+      method: sub_grid
+      min_thickness: 5.0
+      sub_grid:
+        max_iterations: 10
+        residual: redistribute
+      threshold: flux
+    scheme: explicit
+  iceflow:
+    method: unified
+    physics:
+      energy_components: &id002
+      - viscosity
+      - gravity
+      - sliding
+      - floating
+      gravity_cst: 9.81
+      ice_density: 918.0
+      water_density: 1028.0
+      thr_ice_thk: 0.1
+      min_sr: 1.0e-20
+      max_sr: 1.0e+20
+      cf_eswn: &id001 []
+      viscosity:
+        arrhenius: 36.0
+        enhancement_factor: 1.0
+        exponent: 3.0
+        regularization: 1.0e-05
+      sliding:
+        law: weertman
+        use_mask_gr: true
+        use_subgrid_gl: false
+        slidingco: 0.035
+        tau_ref: 0.16245560917644725
+        exponent: 3.0
+        regularization: 1.0
+        u_ref: 100.0
+      minimum_ice_thickness: 0.01
+      remove_rigid_body_modes: true
+    numerics:
+      precision: single
+      Nz: 2
+      basis_horizontal: q1
+      basis_vertical: molho
+      vert_spacing: 4.0
+    unified:
+      mapping: network
+      optimizer: adam
+      inputs:
+      - thk
+      - usurf
+      - arrhenius
+      - tau_ref
+      - dX
+      - water_level
+      bcs: &id003 []
+      nbit_init: 300
+      nbit: 1
+      retrain_freq: 1
+      nbit_warmup: -1
+      init_stop:
+        enabled: false
+      adaptive_time:
+        method: none
+      adaptive_patching:
+        enabled: false
+      network:
+        architecture: dahunet
+        pretrained: false
+        fp16_inference: false
+        seed: 51840855
+        params: ${study.network_params}
+      adam:
+        lr: 0.0014681107023111566
+        lr_init: 0.0006108365573861801
+        optimizer_clipnorm: 1.0
+      halt:
+        success: []
+        failure: []
+      display:
+        print_cost: false
+      data_preparation:
+        framesizemax: 100000000
+        patches_per_batch: 1
+  calving_rate:
+    law: water_depth
+    water_depth:
+      k: 5.0
+    max_rate: 20000.0
+study:
+  workflow: online
+  args:
+    case: jakobshavn
+    profile: paper
+    seed: 51840855
+    gpu: cpu
+    output: ${hydra:runtime.cwd}/../../results
+    namespace: rerun
+    reference_source: null
+    resume: false
+    retry_failed: false
+    defer_scoring: false
+  config:
+    case: jakobshavn
+    input: glaciers/runs/data/jakobshavn.nc
+    metrics:
+      historical_ice_threshold: 1.0
+      selection_criterion: median
+      speed_offset: 10.0
+      threshold_percent: 5.0
+    online:
+      beta1: 0.8
+      beta2: 0.9995
+      clipnorm: 1.0
+      lr: 0.0014681107023111566
+      lr_init: 0.0006108365573861801
+      nbit: 1
+      nbit_init: 300
+      retrain_freq: 1
+    physics:
+      Nz: 2
+      arrhenius: 36.0
+      cf_eswn: *id001
+      energy_components: *id002
+      glen_exponent: 3.0
+      gravity: 9.81
+      horizontal: q1
+      ice_density: 918.0
+      ice_threshold: 0.1
+      imposed_bcs: *id003
+      max_sr: 1.0e+20
+      min_sr: 1.0e-20
+      minimum_ice_thickness: 0.01
+      remove_rigid_body_modes: true
+      sliding_exponent: 3.0
+      sliding_regularization: 1.0
+      slidingco: 0.035
+      strain_regularization: 1.0e-05
+      u_ref: 100.0
+      use_mask_gr: true
+      vertical: molho
+      water_density: 1028.0
+      water_level: 0.0
+    profile: paper
+    reference:
+      fp32_policy: retain_candidate
+      fp32_saved_frame_checks: true
+    runtime:
+      checkpoint_interval_seconds: 60.0
+      compress_checkpoints: false
+    solver:
+      adaptive_damping: true
+      block_iterations: 8
+      cg_max_iter: 4000
+      cg_tol: 0.01
+      consecutive_updates: 3
+      damping: 1.0e-16
+      damping_min: 1.0e-26
+      independent_refinement_steps:
+      - 3
+      - 7
+      independent_rms: 1.0
+      independent_starts: true
+      line_search: armijo
+      max_blocks: 64
+      max_newton_iterations: 200
+      operator: banded
+      preconditioner: barotropic_multigrid
+      probe_batch: 9
+      refinement_rms: 0.001
+      relative_gradient: 0.001
+      stagnant_blocks: 3
+      stagnation_rms: 1.0e-06
+      stopping: marine_velocity
+      timeout_seconds: 14400
+      velocity_tolerance: 1.0
+      warm_start: false
+    sweep:
+      architectures:
+      - MLP
+      - CNN
+      - FNO2
+      - DahuNet_cnn_3f
+      - DahuNet_cnn_5f
+      - DahuNet_fno_3f
+      - DahuNet_fno_5f
+      - DahuNet_scramble
+      conditions:
+      - inclusive
+      pareto_trials: 500
+      population: 20
+      reevaluation_seeds:
+      - 0
+      - 1
+      - 2
+      trial_timeout_seconds: 14400
+      uniform_trials: 50
+    time:
+      calving:
+        c_max: 20000.0
+        k: 5.0
+      cfl: 0.3
+      cfl_percentile: 100.0
+      end: 10.0
+      marine:
+        front:
+          first_order: true
+          fixed: false
+          method: sub_grid
+          min_thickness: 5.0
+          sub_grid:
+            max_iterations: 10
+            residual: redistribute
+          threshold: flux
+        ratio_density: 0.8929961089494164
+        remove_rigid_body_modes: true
+        scheme: explicit
+      save: 1.0
+      slope_type: superbee
+      smb:
+      - *id004
+      smb_update_frequency: 1.0
+      start: 0.0
+      step_max: 1.0
+    transfer:
+      anchor_interval: 1.0
+      anchor_lr: 0.001
+      anchor_start: 1.0
+      anchor_steps: 20000
+      correction_lr: 5.0e-05
+      correction_steps: 10
+      count: 9
+      fine_dt: 0.05
+    validation_only: false
+  architecture: DahuNet_fno_5f
+  architecture_spec:
+    family: dahunet
+    backend: fno
+    features: &id005
+    - dsdx
+    - dsdy
+    - grad_s
+    - u_sia
+    - u_weertman
+    params:
+      width: 24
+      modes1: 7
+      modes2: 7
+      padding: 9
+      use_grid: true
+  directory: ${hydra:runtime.cwd}/../../results/rerun/jakobshavn/paper/online/DahuNet_fno_5f/seed51840855
+  network_params:
+    width: 24
+    modes1: 7
+    modes2: 7
+    padding: 9
+    use_grid: true
+    backend: fno
+    features: *id005
